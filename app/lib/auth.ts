@@ -17,6 +17,13 @@ export const auth = betterAuth({
     "https://hireloop-livid.vercel.app",
     "https://*.vercel.app",
   ],
+  account: {
+    accountLinking: {
+      enabled: true,
+      trustedProviders: ["google", "github"],
+      requireLocalEmailVerified: false,
+    },
+  },
   emailAndPassword: {
     enabled: true,
   },
@@ -27,7 +34,10 @@ export const auth = betterAuth({
     },
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID || "",
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
+      clientSecret:
+        process.env.GOOGLE_CLIENT_SECRET ||
+        process.env.GOOGLE_CLIENT_SECRECT ||
+        "",
     },
   },
   user: {
